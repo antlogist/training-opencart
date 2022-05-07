@@ -1,0 +1,16 @@
+db
+app/admin
+app/catalog/controller
+app/catalog/language
+app/catalog/model
+app/catalog/view/javascript
+app/catalog/view/theme/*
+!app/catalog/view/theme/custom
+app/image
+app/system
+app/.htaccess.txt
+app/config-dist.php
+app/config.php
+app/index.php
+app/php.ini
+app/robots.txt
