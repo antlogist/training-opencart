@@ -3,7 +3,7 @@
 /**
  * Controller for email collection
  */
-class ControllerExtensionModuleCutsomSubscription extends Controller
+class ControllerExtensionModuleCustomSubscription extends Controller
 {
 
     /**
@@ -165,4 +165,16 @@ class ControllerExtensionModuleCutsomSubscription extends Controller
 
         return !$this->error;
     }
+
+	public function install() {
+		$this->load->model('extension/module/custom_subscription');
+
+		$this->model_extension_module_custom_subscription->install();
+	}
+
+	public function uninstall() {
+		$this->load->model('extension/module/custom_subscription');
+
+		$this->model_extension_module_custom_subscription->uninstall();
+	}
 }
