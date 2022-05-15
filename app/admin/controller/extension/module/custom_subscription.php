@@ -3,7 +3,7 @@
 /**
  * Controller for email collection
  */
-class ControllerExtensionModuleCutsomSubscription extends Controller
+class ControllerExtensionModuleCustomSubscription extends Controller
 {
 
     /**
