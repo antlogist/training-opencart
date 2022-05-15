@@ -1,5 +1,5 @@
 <?php
-class ModelExtensionCustomSubscription extends Model {
+class ModelExtensionModuleCustomSubscription extends Model {
 	public function install() {
 		$this->db->query("
 			CREATE TABLE `" . DB_PREFIX . "custom_subscription` (

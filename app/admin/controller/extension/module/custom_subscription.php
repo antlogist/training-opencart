@@ -169,12 +169,12 @@ class ControllerExtensionModuleCustomSubscription extends Controller
 	public function install() {
 		$this->load->model('extension/module/custom_subscription');
 
-		$this->model_extension_custom_subscription->install();
+		$this->model_extension_module_custom_subscription->install();
 	}
 
 	public function uninstall() {
 		$this->load->model('extension/module/custom_subscription');
 
-		$this->model_extension_custom_subscription->uninstall();
+		$this->model_extension_module_custom_subscription->uninstall();
 	}
 }
