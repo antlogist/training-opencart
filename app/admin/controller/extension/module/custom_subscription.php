@@ -166,12 +166,22 @@ class ControllerExtensionModuleCustomSubscription extends Controller
         return !$this->error;
     }
 
+    /**
+     * Create table
+     *
+     * @return void
+     */
 	public function install() {
 		$this->load->model('extension/module/custom_subscription');
 
 		$this->model_extension_module_custom_subscription->install();
 	}
 
+    /**
+     * Drop table
+     *
+     * @return void
+     */
 	public function uninstall() {
 		$this->load->model('extension/module/custom_subscription');
 
