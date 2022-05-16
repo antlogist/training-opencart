@@ -31,7 +31,7 @@ class ControllerExtensionModuleCustomSubscription extends Controller
 
         $data['btn_subscription'] = $this->language->get('btn_subscription');
 
-        // Rturn template for rendering
+        // Rturn template for rendering if user is not logged
         if (!$this->customer->isLogged()) {
             return $this->load->view('extension/module/custom_subscription', $data);
         }
@@ -61,7 +61,7 @@ class ControllerExtensionModuleCustomSubscription extends Controller
 
             if ($this->isValidEmail($email)) {
                 $this->model_extension_module_custom_subscription->add($email);
-                $json['success'] = "Email address has beed added successfully";
+                $json['success'] = "Email address has been added successfully";
             } else {
                 $json['error'] = "Wrong email!";
             }
