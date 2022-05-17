@@ -1,5 +1,7 @@
 <?php
 
+include_once(DIR_APPLICATION . 'controller/extension/Classes/CustomSession.php');
+
 /**
  * Subscription controller
  */
@@ -30,6 +32,8 @@ class ControllerExtensionModuleCustomSubscription extends Controller
         $data['text_placeholder'] = $this->language->get('text_placeholder');
 
         $data['btn_subscription'] = $this->language->get('btn_subscription');
+
+        $data['_tokenSubscription'] = $this->_tokenSubscription();
 
         // Rturn template for rendering if user is not logged
         if (!$this->customer->isLogged()) {
@@ -80,5 +84,37 @@ class ControllerExtensionModuleCustomSubscription extends Controller
     public function isValidEmail(String $email): Bool
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
+    }
+
+    /**
+     * Generate token
+     * @private
+     * @return mixed
+     */
+    public function _tokenSubscription()
+    {
+        if (!CustomSession::has("token_subscription")) {
+            $randomToken = str_replace("=", "", base64_encode(openssl_random_pseudo_bytes(32)));
+            CustomSession::add("token_subscription", $randomToken);
+        }
+
+        return CustomSession::get("token_subscription");
+    }
+
+    /**
+     * Verify token
+     * @param $requestToken
+     * @param $regenerate
+     * @return boolean
+     */
+    public function verifyCSRFTokenSubscription($requestToken, $regenerate = true)
+    {
+        if (CustomSession::has("token_subscription") && CustomSession::get("token_subscription") === $requestToken) {
+            if ($regenerate) {
+                CustomSession::remove("token_subscription");
+            }
+            return true;
+        }
+        return false;
     }
 }
